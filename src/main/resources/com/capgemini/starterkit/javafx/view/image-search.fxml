@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-preview-i18n-resource ../bundle/bundle.properties?>
+<?scenebuilder-stylesheet ../css/standard.css?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
+  <Label layoutX="135.0" layoutY="14.0" styleClass="formTitle" text="%label.windowTitle" />
+  <Button fx:id="searchButton" defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchButtonAction" text="%button.selectFolder" />
+   <TableView fx:id="tableImage" layoutX="14.0" layoutY="81.0" prefHeight="290.0" prefWidth="152.0">
+     <columns>
+       <TableColumn fx:id="columnImage" prefWidth="151.0" text="Image" visible="false" />
+     </columns>
+   </TableView>
+</AnchorPane>
