@@ -2,18 +2,35 @@
 
 <?scenebuilder-preview-i18n-resource ../bundle/bundle.properties?>
 <?scenebuilder-stylesheet ../css/standard.css?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
-  <Label layoutX="135.0" layoutY="14.0" styleClass="formTitle" text="%label.windowTitle" />
-  <Button fx:id="searchButton" defaultButton="true" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchButtonAction" text="%button.selectFolder" />
-   <TableView fx:id="tableImage" layoutX="14.0" layoutY="81.0" prefHeight="290.0" prefWidth="152.0">
+<AnchorPane prefHeight="522.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
+  <Label layoutX="294.0" layoutY="14.0" styleClass="formTitle" text="%label.windowTitle" />
+  <Button fx:id="searchButton" defaultButton="true" layoutX="26.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchButtonAction" text="%button.selectFolder" />
+   <TableView fx:id="tableImage" layoutX="14.0" layoutY="81.0" prefWidth="152.0">
      <columns>
-       <TableColumn fx:id="columnImage" prefWidth="151.0" text="Image" visible="false" />
+       <TableColumn fx:id="columnImage" prefWidth="151.0" text="%column.name" />
      </columns>
    </TableView>
+   <Pane layoutX="172.0" layoutY="81.0">
+      <children>
+         <ScrollPane layoutX="1.0">
+           <content>
+             <AnchorPane minHeight="50.0" minWidth="50.0">
+                  <children>
+                     <ImageView fx:id="imageView" fitHeight="456.0" fitWidth="639.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../../../../../../../../../Users/mgorlas/Pictures/Images/IMG_0626.jpg" />
+                        </image></ImageView>
+                  </children>
+               </AnchorPane>
+           </content>
+         </ScrollPane>
+      </children>
+   </Pane>
 </AnchorPane>
