@@ -9,21 +9,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane prefHeight="579.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
-  <Label layoutX="294.0" layoutY="14.0" styleClass="formTitle" text="%label.windowTitle" />
-  <Button fx:id="searchButton" styleClass="buttonSearch" defaultButton="true" layoutX="26.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchButtonAction" text="%button.selectFolder" />
-   <TableView fx:id="tableImage" layoutX="14.0" layoutY="81.0" prefHeight="475.0" prefWidth="152.0">
+<AnchorPane prefHeight="591.0" prefWidth="880.0" styleClass="panel" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
+  <Label layoutX="450.0" layoutY="11.0" styleClass="formTitle" text="%label.title" />
+  <Button fx:id="searchButton" defaultButton="true" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="31.0" prefWidth="212.0" styleClass="buttonSearch" text="%button.selectFolder" />
+   <TableView fx:id="tableImage" layoutX="14.0" layoutY="81.0" prefHeight="490.0" prefWidth="212.0">
      <columns>
-       <TableColumn fx:id="columnImage" prefWidth="151.0" text="%column.name" />
+         <TableColumn fx:id="columnNameImage" prefWidth="211.0" styleClass="headerTitle" text="%column.nameImage" />
      </columns>
    </TableView>
-   <Pane layoutX="172.0" layoutY="81.0">
+   <Pane layoutX="235.0" layoutY="81.0">
       <children>
          <ScrollPane layoutX="1.0">
            <content>
              <AnchorPane minHeight="50.0" minWidth="50.0" styleClass="imageView">
                   <children>
-                     <ImageView fx:id="imageView"  fitHeight="490.0" fitWidth="628.0" pickOnBounds="true" preserveRatio="true"></ImageView>
+                     <ImageView fx:id="imageView" fitHeight="490.0" fitWidth="628.0" pickOnBounds="true" preserveRatio="true" />
                   </children>
                </AnchorPane>
            </content>

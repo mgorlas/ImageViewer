@@ -20,11 +20,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * Controller for the person search screen.
@@ -53,7 +55,7 @@ public class ImageSearchController {
 	TableView<File> tableImage;
 
 	@FXML
-	TableColumn<File, String> columnImage;
+	TableColumn<File, String> columnNameImage;
 
 	private final ImageSearch model = new ImageSearch();
 
@@ -65,7 +67,7 @@ public class ImageSearchController {
 	@FXML
 	private void initialize() {
 		initializeResultTable();
-		columnImage.textProperty().bindBidirectional(model.nameProperty());
+		columnNameImage.textProperty().bindBidirectional(model.nameProperty());
 		tableImage.itemsProperty().bind(model.resultProperty());
 	}
 
@@ -92,17 +94,17 @@ public class ImageSearchController {
 			tableImage.getSortOrder().clear();
 		}
 
-
 	}
 
 	private boolean isImage(String str) {
-		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") ||
-				str.equals(".tiff") || str.equals(".swf") || str.equals(".cdr") ||
-				str.equals(".gif") || str.equals(".jpeg") || str.equals(".tif") || str.equals(".fmw");
+		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") || str.equals(".tiff")
+				|| str.equals(".swf") || str.equals(".cdr") || str.equals(".gif") || str.equals(".jpeg")
+				|| str.equals(".tif") || str.equals(".fmw");
 	}
 
 	private void initializeResultTable() {
-		columnImage.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getName()));
+		columnNameImage.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getName()));
+
 		tableImage.setPlaceholder(new Label(resources.getString("table.emptyText")));
 
 		tableImage.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<File>() {

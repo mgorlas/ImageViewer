@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.scene.image.Image;
 
 /**
  * Data displayed image on screen.
@@ -47,6 +50,6 @@ public class ImageSearch {
 	}
 	@Override
 	public String toString() {
-		return "Image Search [name=" + name + ", result=" + result + "]";
+		return name.get();
 	}
 }
