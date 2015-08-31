@@ -9,18 +9,28 @@
 
 /* Select elements by their CSS class ("styleClass" attribute) */
 .formTitle {
-	-fx-font-size: 25.0px;
-	-fx-font-weight: bold;
+  -fx-font-size: 25.0px;
+  -fx-font-weight: bold;
 }
 
 
 /* Select element by its "fx:id" attribute */
 #resultTable #birthDateColumn {
-	-fx-alignment: center-right;
+  -fx-alignment: center-right;
 }
 
 /* Select using the "selected" pseudo-selector */
 .table-view .table-row-cell:selected {
-	-fx-font-weight: bold;
-	-fx-font-size: 130.0%;
+  -fx-font-weight: bold;
+  -fx-font-size: 130.0%;
+}
+
+#buttonSearch {
+    -fx-color: #fff;
+    -fx-background-color: #337ab7;
+    -fx-border-color: #2e6da4;
+    -fx-padding: 6px 12px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 400;
+    -fx-cursor: pointer;
 }

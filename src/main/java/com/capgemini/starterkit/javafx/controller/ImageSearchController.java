@@ -1,6 +1,7 @@
 package com.capgemini.starterkit.javafx.controller;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +59,8 @@ public class ImageSearchController {
 
 	private File directory;
 
-	@FXML ImageView imageView;
+	@FXML
+	ImageView imageView;
 
 	@FXML
 	private void initialize() {
@@ -71,9 +73,32 @@ public class ImageSearchController {
 	public void searchButtonAction(ActionEvent event) {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		this.directory = directoryChooser.showDialog(new Stage());
-		File[] fileImages = directory.listFiles();
-		model.setResult(new ArrayList<File>(Arrays.asList(fileImages)));
-		tableImage.getSortOrder().clear();
+		if (directory != null) {
+			FilenameFilter fileNameFilter = new FilenameFilter() {
+
+				@Override
+				public boolean accept(File dir, String name) {
+					if (name.lastIndexOf('.') > 0) {
+						int lastIndex = name.lastIndexOf('.');
+						String str = name.substring(lastIndex).toLowerCase();
+						if (isImage(str)) {
+							return true;
+						}
+					}
+					return false;
+				}
+			};
+			model.setResult(new ArrayList<File>(Arrays.asList(directory.listFiles(fileNameFilter))));
+			tableImage.getSortOrder().clear();
+		}
+
+
+	}
+
+	private boolean isImage(String str) {
+		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") ||
+				str.equals(".tiff") || str.equals(".swf") || str.equals(".cdr") ||
+				str.equals(".gif") || str.equals(".jpeg") || str.equals(".tif") || str.equals(".fmw");
 	}
 
 	private void initializeResultTable() {
@@ -90,7 +115,9 @@ public class ImageSearchController {
 
 					@Override
 					protected Void call() throws Exception {
-						imageView.setImage(new Image(newValue.getPath()));
+						Image img = new Image("file:" + newValue.toString());
+						LOG.debug(img);
+						imageView.setImage(img);
 						imageView.autosize();
 						return null;
 					}
