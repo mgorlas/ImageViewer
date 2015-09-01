@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
 
+import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
+import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 import com.capgemini.starterkit.javafx.model.ImageSearch;
 
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -20,13 +22,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 /**
  * Controller for the person search screen.
@@ -52,10 +52,10 @@ public class ImageSearchController {
 	Button searchButton;
 
 	@FXML
-	TableView<File> tableImage;
+	TableView<ImageVO> tableImage;
 
 	@FXML
-	TableColumn<File, String> columnNameImage;
+	TableColumn<ImageVO, String> columnNameImage;
 
 	private final ImageSearch model = new ImageSearch();
 
@@ -64,10 +64,11 @@ public class ImageSearchController {
 	@FXML
 	ImageView imageView;
 
+	private final DataProvider dataProvider = DataProvider.INSTANCE;
+
 	@FXML
 	private void initialize() {
 		initializeResultTable();
-		columnNameImage.textProperty().bindBidirectional(model.nameProperty());
 		tableImage.itemsProperty().bind(model.resultProperty());
 	}
 
@@ -90,7 +91,8 @@ public class ImageSearchController {
 					return false;
 				}
 			};
-			model.setResult(new ArrayList<File>(Arrays.asList(directory.listFiles(fileNameFilter))));
+			;
+			model.setResult(dataProvider.toFileVO(directory.listFiles(fileNameFilter)));
 			tableImage.getSortOrder().clear();
 		}
 
@@ -107,17 +109,17 @@ public class ImageSearchController {
 
 		tableImage.setPlaceholder(new Label(resources.getString("table.emptyText")));
 
-		tableImage.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<File>() {
+		tableImage.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageVO>() {
 
 			@Override
-			public void changed(ObservableValue<? extends File> observable, File oldValue, File newValue) {
+			public void changed(ObservableValue<? extends ImageVO> observable, ImageVO oldValue, ImageVO newValue) {
 				LOG.debug(newValue + " selected");
 
 				Task<Void> imageTask = new Task<Void>() {
 
 					@Override
 					protected Void call() throws Exception {
-						Image img = new Image("file:" + newValue.toString());
+						Image img = newValue.getImage();
 						LOG.debug(img);
 						imageView.setImage(img);
 						imageView.autosize();

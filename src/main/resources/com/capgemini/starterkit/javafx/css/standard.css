@@ -35,6 +35,7 @@
 	-fx-font-weight: bold;
 	-fx-font-size: 13px;
 	-fx-text-fill:white;
+	-fx-cursor: hand;
 }
 .buttonSearch:hover {
 	-fx-text-fill:white;

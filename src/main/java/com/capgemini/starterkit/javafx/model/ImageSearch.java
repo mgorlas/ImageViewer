@@ -1,17 +1,15 @@
 package com.capgemini.starterkit.javafx.model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.scene.image.Image;
 
 /**
  * Data displayed image on screen.
@@ -21,7 +19,7 @@ import javafx.scene.image.Image;
 public class ImageSearch {
 
 	private final StringProperty name = new SimpleStringProperty();
-	private final ListProperty<File> result = new SimpleListProperty<>(
+	private final ListProperty<ImageVO> result = new SimpleListProperty<>(
 			FXCollections.observableList(new ArrayList<>()));
 
 
@@ -37,15 +35,15 @@ public class ImageSearch {
 		return name;
 	}
 
-	public final List<File> getResult() {
+	public final List<ImageVO> getResult() {
 		return result.get();
 	}
 
-	public final void setResult(List<File> value) {
+	public final void setResult(List<ImageVO> value) {
 		result.setAll(value);
 	}
 
-	public ListProperty<File> resultProperty() {
+	public ListProperty<ImageVO> resultProperty() {
 		return result;
 	}
 	@Override
