@@ -1,7 +1,6 @@
 package com.capgemini.starterkit.javafx.dataprovider.data;
 
 import java.io.File;
-import java.time.LocalDate;
 
 import javafx.scene.image.Image;
 
@@ -21,13 +20,23 @@ public class ImageVO {
 	public String getName(){
 		return name;
 	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public File getFile(){
+		return file;
+	}
+	public void setFile(File file){
+		this.file = file;
+	}
+
 	public Image getImage(){
-		return new Image(toString());
+		return new Image("file:" + file.toString());
 	}
 
 	@Override
 	public String toString() {
-		return "file:" + file.toString();
+		return name;
 	}
 
 }

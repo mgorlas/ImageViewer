@@ -17,7 +17,7 @@ public interface DataProvider {
 	 */
 	DataProvider INSTANCE = new DataProviderImpl();
 
-	List<ImageVO> toFileVO(File[] listFiles);
+	List<ImageVO> searchImage(File directory);
 
 
 
