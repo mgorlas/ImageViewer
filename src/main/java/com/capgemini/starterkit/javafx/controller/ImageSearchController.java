@@ -63,6 +63,10 @@ public class ImageSearchController {
 	@FXML
 	public void searchButtonAction(ActionEvent event) {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
+		/*
+		 * REV: okno wyboru katalogu powinno byc modalne w stosunku do glownego okna
+		 * showDialog(primaryStage)
+		 */
 		File directory = directoryChooser.showDialog(new Stage());
 		model.setResult(dataProvider.searchImage(directory));
 	}

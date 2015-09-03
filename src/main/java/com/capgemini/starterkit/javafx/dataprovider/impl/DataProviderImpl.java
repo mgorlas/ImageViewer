@@ -16,6 +16,9 @@ import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 public class DataProviderImpl implements DataProvider {
 
 	private static final Logger LOG = Logger.getLogger(DataProviderImpl.class);
+	/*
+	 * REV: wynik wyszukiwania nie powinien byc przechowywany jako pole w klasie
+	 */
 	private List<ImageVO> listFileVO = new ArrayList<>();
 
 	@Override
@@ -47,6 +50,9 @@ public class DataProviderImpl implements DataProvider {
 	}
 
 	private boolean isImage(String str) {
+		/*
+		 * REV: czy JavaFX jest w stanie wyswietlic pliki SWF, CDR i FMW?
+		 */
 		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") || str.equals(".tiff")
 				|| str.equals(".swf") || str.equals(".cdr") || str.equals(".gif") || str.equals(".jpeg")
 				|| str.equals(".tif") || str.equals(".fmw");
