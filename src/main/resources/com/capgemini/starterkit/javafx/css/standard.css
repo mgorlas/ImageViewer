@@ -1,9 +1,6 @@
-
-/* defined colors */
-
-
 /* Root of the scene */
 .root {
+    -fx-background-image: url("../img/gray.jpg");
 }
 
 
@@ -46,7 +43,4 @@
 .buttonSearch:pressed {
 	-fx-border-style: segments(1);
 	-fx-border-color: white;
-}
-.panel{
-    -fx-background-image: url("../img/gray.jpg");
 }

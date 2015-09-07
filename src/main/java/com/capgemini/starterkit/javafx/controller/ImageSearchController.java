@@ -20,8 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 
 /**
  * Controller for the image search screen.
@@ -53,22 +53,46 @@ public class ImageSearchController {
 
 	@FXML
 	ListView<ImageVO> imageListView;
+	@FXML
+	AnchorPane panel;
 
+	/**
+	 * The JavaFX runtime calls this method after the FXML file loaded.
+	 * <p>
+	 * The @FXML annotated fields are initialized at this point.
+	 * </p>
+	 * <p>
+	 * NOTE: The method name must be {@code initialize}.
+	 * </p>
+	 */
 	@FXML
 	private void initialize() {
 		initializeResultTable();
+		/*
+		 * Bind controls properties to model properties.
+		 */
 		imageListView.itemsProperty().bind(model.resultProperty());
 	}
 
+	/**
+	 * The method used to select a folder and load the images to the list
+	 */
 	@FXML
 	public void searchButtonAction(ActionEvent event) {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
-		File directory = directoryChooser.showDialog(new Stage());
+		File directory = directoryChooser.showDialog(panel.getScene().getWindow());
 		model.setResult(dataProvider.searchImage(directory));
 	}
 
+
+	/**
+	 * The method used to initialize the table
+	 */
 	private void initializeResultTable() {
 		imageListView.setPlaceholder(new Label(resources.getString("table.emptyText")));
+		/*
+		 * When table row gets selected display given image.
+		 */
 		imageListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageVO>() {
 
 			@Override
@@ -79,7 +103,7 @@ public class ImageSearchController {
 
 					@Override
 					protected Void call() throws Exception {
-						Image img = newValue.getImage();
+						Image img = new Image("file:" + newValue.toString());
 						LOG.debug(img);
 						imageView.setImage(img);
 						imageView.autosize();

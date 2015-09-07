@@ -10,33 +10,26 @@ import javafx.scene.image.Image;
 public class ImageVO {
 
 	private File file;
-	private String name;
 
 	public ImageVO(File file) {
 		this.file = file;
-		this.name = file.getName();
 	}
 
-	public String getName(){
-		return name;
+	public String getName() {
+		return file.getName();
 	}
-	public void setName(String name){
-		this.name = name;
-	}
-	public File getFile(){
+
+	public File getFile() {
 		return file;
 	}
-	public void setFile(File file){
-		this.file = file;
-	}
 
-	public Image getImage(){
-		return new Image("file:" + file.toString());
+	public void setFile(File file) {
+		this.file = file;
 	}
 
 	@Override
 	public String toString() {
-		return name;
+		return file.getName();
 	}
 
 }

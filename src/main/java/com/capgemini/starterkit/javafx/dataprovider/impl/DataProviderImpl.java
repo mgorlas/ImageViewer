@@ -11,17 +11,16 @@ import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
 import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 
 /**
- * Provides data. Data is stored locally in class.
+ * Provides data. Data is stored from file dictionary.
  */
 public class DataProviderImpl implements DataProvider {
 
 	private static final Logger LOG = Logger.getLogger(DataProviderImpl.class);
-	private List<ImageVO> listFileVO = new ArrayList<>();
 
 	@Override
 	public List<ImageVO> searchImage(File directory) {
+		List<ImageVO> listFileVO = new ArrayList<>();
 		LOG.debug("click searchImage()");
-		listFileVO.clear();
 
 		if (directory != null) {
 			FilenameFilter fileNameFilter = new FilenameFilter() {
@@ -46,9 +45,13 @@ public class DataProviderImpl implements DataProvider {
 		return listFileVO;
 	}
 
+	/**
+	 * Method checks whether the specified string is an extension for the image
+	 * @param str
+	 * @return boolean
+	 */
 	private boolean isImage(String str) {
 		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") || str.equals(".tiff")
-				|| str.equals(".swf") || str.equals(".cdr") || str.equals(".gif") || str.equals(".jpeg")
-				|| str.equals(".tif") || str.equals(".fmw");
+				|| str.equals(".gif") || str.equals(".jpeg") || str.equals(".tif");
 	}
 }

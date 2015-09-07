@@ -17,6 +17,12 @@ public interface DataProvider {
 	 */
 	DataProvider INSTANCE = new DataProviderImpl();
 
+
+	/**
+	 * Method searches for images in a given folder
+	 * @param directory
+	 * @return List of Object ImageVO
+	 */
 	List<ImageVO> searchImage(File directory);
 
 
