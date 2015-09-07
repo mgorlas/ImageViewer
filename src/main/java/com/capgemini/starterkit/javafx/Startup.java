@@ -1,4 +1,4 @@
-package com.capgemini.starterkit.javafx;
+package main.java.com.capgemini.starterkit.javafx;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

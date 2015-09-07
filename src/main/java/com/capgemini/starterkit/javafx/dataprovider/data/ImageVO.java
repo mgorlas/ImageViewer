@@ -1,4 +1,4 @@
-package com.capgemini.starterkit.javafx.dataprovider.data;
+package main.java.com.capgemini.starterkit.javafx.dataprovider.data;
 
 import java.io.File;
 

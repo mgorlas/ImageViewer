@@ -1,14 +1,10 @@
-package com.capgemini.starterkit.javafx.controller;
+package main.java.com.capgemini.starterkit.javafx.controller;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
-
-import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
-import com.capgemini.starterkit.javafx.model.ImageSearch;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,6 +18,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.DataProvider;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+import main.java.com.capgemini.starterkit.javafx.model.ImageSearch;
 
 /**
  * Controller for the image search screen.
@@ -103,7 +102,7 @@ public class ImageSearchController {
 
 					@Override
 					protected Void call() throws Exception {
-						Image img = new Image("file:" + newValue.toString());
+						Image img = new Image("file:" + newValue.getFile().toString());
 						LOG.debug(img);
 						imageView.setImage(img);
 						imageView.autosize();

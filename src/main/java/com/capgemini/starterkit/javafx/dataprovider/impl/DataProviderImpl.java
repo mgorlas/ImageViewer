@@ -1,4 +1,4 @@
-package com.capgemini.starterkit.javafx.dataprovider.impl;
+package main.java.com.capgemini.starterkit.javafx.dataprovider.impl;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.DataProvider;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 
 /**
  * Provides data. Data is stored from file dictionary.

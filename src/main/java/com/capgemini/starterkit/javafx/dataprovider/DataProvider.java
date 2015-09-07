@@ -1,10 +1,10 @@
-package com.capgemini.starterkit.javafx.dataprovider;
+package main.java.com.capgemini.starterkit.javafx.dataprovider;
 
 import java.io.File;
 import java.util.List;
 
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
-import com.capgemini.starterkit.javafx.dataprovider.impl.DataProviderImpl;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.impl.DataProviderImpl;
 
 /**
  * Provides data.
