@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 public class ImageVO {
 
 	private File file;
+	/*
+	 * REV: File.getName() zwraca nazwe pliku
+	 */
+	private String name;
 
 	public ImageVO(File file) {
 		this.file = file;
@@ -23,6 +27,14 @@ public class ImageVO {
 		return file;
 	}
 
+	public Image getImage(){
+		/*
+		 * REV: klasa Image nalezy do wartswy GUI, klasa ImageVO do warstwy danych
+		 * warstwa danych nie ma pojecia o warstwie GUI
+		 */
+		return new Image("file:" + file.toString());
+  }
+  
 	public void setFile(File file) {
 		this.file = file;
 	}
