@@ -1,14 +1,10 @@
-package com.capgemini.starterkit.javafx.controller;
+package main.java.com.capgemini.starterkit.javafx.controller;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
-
-import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
-import com.capgemini.starterkit.javafx.model.ImageSearch;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,8 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.DataProvider;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+import main.java.com.capgemini.starterkit.javafx.model.ImageSearch;
 
 /**
  * Controller for the image search screen.
@@ -53,26 +52,46 @@ public class ImageSearchController {
 
 	@FXML
 	ListView<ImageVO> imageListView;
+	@FXML
+	AnchorPane panel;
 
+	/**
+	 * The JavaFX runtime calls this method after the FXML file loaded.
+	 * <p>
+	 * The @FXML annotated fields are initialized at this point.
+	 * </p>
+	 * <p>
+	 * NOTE: The method name must be {@code initialize}.
+	 * </p>
+	 */
 	@FXML
 	private void initialize() {
 		initializeResultTable();
+		/*
+		 * Bind controls properties to model properties.
+		 */
 		imageListView.itemsProperty().bind(model.resultProperty());
 	}
 
+	/**
+	 * The method used to select a folder and load the images to the list
+	 */
 	@FXML
 	public void searchButtonAction(ActionEvent event) {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
-		/*
-		 * REV: okno wyboru katalogu powinno byc modalne w stosunku do glownego okna
-		 * showDialog(primaryStage)
-		 */
-		File directory = directoryChooser.showDialog(new Stage());
+		File directory = directoryChooser.showDialog(panel.getScene().getWindow());
 		model.setResult(dataProvider.searchImage(directory));
 	}
 
+
+	/**
+	 * The method used to initialize the table
+	 */
 	private void initializeResultTable() {
 		imageListView.setPlaceholder(new Label(resources.getString("table.emptyText")));
+		/*
+		 * When table row gets selected display given image.
+		 */
 		imageListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageVO>() {
 
 			@Override
@@ -83,7 +102,7 @@ public class ImageSearchController {
 
 					@Override
 					protected Void call() throws Exception {
-						Image img = newValue.getImage();
+						Image img = new Image("file:" + newValue.getFile().toString());
 						LOG.debug(img);
 						imageView.setImage(img);
 						imageView.autosize();

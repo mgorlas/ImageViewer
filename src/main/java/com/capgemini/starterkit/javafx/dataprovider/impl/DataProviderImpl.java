@@ -1,4 +1,4 @@
-package com.capgemini.starterkit.javafx.dataprovider.impl;
+package main.java.com.capgemini.starterkit.javafx.dataprovider.impl;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.capgemini.starterkit.javafx.dataprovider.DataProvider;
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.DataProvider;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 
 /**
- * Provides data. Data is stored locally in class.
+ * Provides data. Data is stored from file dictionary.
  */
 public class DataProviderImpl implements DataProvider {
 
@@ -23,8 +23,8 @@ public class DataProviderImpl implements DataProvider {
 
 	@Override
 	public List<ImageVO> searchImage(File directory) {
+		List<ImageVO> listFileVO = new ArrayList<>();
 		LOG.debug("click searchImage()");
-		listFileVO.clear();
 
 		if (directory != null) {
 			FilenameFilter fileNameFilter = new FilenameFilter() {
@@ -49,12 +49,16 @@ public class DataProviderImpl implements DataProvider {
 		return listFileVO;
 	}
 
+	/**
+	 * Method checks whether the specified string is an extension for the image
+	 * @param str
+	 * @return boolean
+	 */
 	private boolean isImage(String str) {
 		/*
 		 * REV: czy JavaFX jest w stanie wyswietlic pliki SWF, CDR i FMW?
 		 */
 		return str.equals(".jpg") || str.equals(".png") || str.equals(".bmp") || str.equals(".tiff")
-				|| str.equals(".swf") || str.equals(".cdr") || str.equals(".gif") || str.equals(".jpeg")
-				|| str.equals(".tif") || str.equals(".fmw");
+				|| str.equals(".gif") || str.equals(".jpeg") || str.equals(".tif");
 	}
 }

@@ -1,15 +1,14 @@
-package com.capgemini.starterkit.javafx.model;
+package main.java.com.capgemini.starterkit.javafx.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import main.java.com.capgemini.starterkit.javafx.dataprovider.data.ImageVO;
 
 /**
  * Data displayed image on screen.

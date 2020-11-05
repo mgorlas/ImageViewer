@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane prefHeight="610.0" prefWidth="880.0" styleClass="panel" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.starterkit.javafx.controller.ImageSearchController">
+<AnchorPane fx:id="panel" prefHeight="610.0" prefWidth="880.0" styleClass="panel" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.capgemini.starterkit.javafx.controller.ImageSearchController">
   <Label layoutX="450.0" layoutY="11.0" styleClass="formTitle" text="%label.title" />
   <Button fx:id="searchButton" defaultButton="true" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="31.0" prefWidth="212.0" styleClass="buttonSearch" text="%button.selectFolder" />
     <ListView fx:id="imageListView" layoutX="14.0" layoutY="81.0" prefHeight="492.0" prefWidth="212.0" />

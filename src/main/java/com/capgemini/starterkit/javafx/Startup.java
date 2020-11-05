@@ -1,4 +1,4 @@
-package com.capgemini.starterkit.javafx;
+package main.java.com.capgemini.starterkit.javafx;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -50,7 +50,6 @@ public class Startup extends Application {
 		 */
 		scene.getStylesheets()
 				.add(getClass().getResource("/com/capgemini/starterkit/javafx/css/standard.css").toExternalForm());
-		// scene.getStylesheets().add(getClass().getResource("/com/capgemini/starterkit/javafx/css/alternative.css").toExternalForm());
 
 		primaryStage.setScene(scene);
 
